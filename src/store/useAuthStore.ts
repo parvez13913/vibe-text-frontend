@@ -5,8 +5,13 @@ import { axiosInstance } from "../lib/axiosInstance";
 interface AuthStore {
   checkAuth: () => void;
   isCheckingAuth: boolean;
-  isSigninUp: boolean;
   authUser: any;
+  isSigningUp: boolean;
+  signup: (formData: {
+    fullName: string;
+    email: string;
+    password: string;
+  }) => Promise<void>;
 }
 
 interface SignUpData {
@@ -18,7 +23,7 @@ interface SignUpData {
 export const useAuthStore = create<AuthStore>((set) => ({
   authUser: null,
   isCheckingAuth: true,
-  isSigninUp: false,
+  isSigningUp: false,
 
   checkAuth: async () => {
     try {
@@ -32,8 +37,8 @@ export const useAuthStore = create<AuthStore>((set) => ({
     }
   },
 
-  signUp: async (data: SignUpData) => {
-    set({ isSigninUp: true });
+  signup: async (data: SignUpData) => {
+    set({ isSigningUp: true });
     try {
       const response = await axiosInstance.post("/auth/signUp", data);
       set({ authUser: response?.data });
@@ -41,7 +46,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
     } finally {
-      set({ isSigninUp: false });
+      set({ isSigningUp: false });
     }
   },
 }));
