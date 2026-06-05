@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   LoaderIcon,
   LockIcon,
@@ -23,7 +24,7 @@ const SignUpPage = () => {
   };
   return (
     <div className="w-full flex items-center justify-center p-4 bg-slate-900">
-      <div className="relative w-full max-w-6xl md:h-[800px] h-[650px]">
+      <div className="relative w-full max-w-6xl md:h-200 h-162.5">
         <BorderAnimatedContainer>
           <div className="w-full flex flex-col md:flex-row">
             <div className="md:w-1/2 p-8 flex items-center justify-center md:border-r border-slate-600/30">
@@ -50,7 +51,7 @@ const SignUpPage = () => {
                           setFormData({ ...formData, fullName: e.target.value })
                         }
                         className="input"
-                        placeholder="John Doe"
+                        placeholder="Parvez Rahman"
                       />
                     </div>
                   </div>
@@ -68,7 +69,7 @@ const SignUpPage = () => {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         className="input"
-                        placeholder="johndoe@gmail.com"
+                        placeholder="parvezz13913@gmail.com"
                       />
                     </div>
                   </div>
